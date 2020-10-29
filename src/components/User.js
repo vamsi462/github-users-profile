@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import Card from './Card'
 export default function User(){
     return (
        <section className="section">
            <Wrapper className="section-center">
-            
+                <Card/>
            </Wrapper>
        </section>
     )
