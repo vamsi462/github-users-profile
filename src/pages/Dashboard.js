@@ -8,7 +8,8 @@ export default function Dashboard() {
            <Info/>
            {/* <Search/> */}
            {/* <Repos/> */}
-           <User/>
+           <User/> 
         </div>
     )
 }
+ 
