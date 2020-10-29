@@ -4,10 +4,10 @@ import { Info, Navbar, Search, Repos, User } from '../components'
 export default function Dashboard() {
     return (
         <div>
-            <Navbar></Navbar>
+            {/* <Navbar></Navbar> */}
            <Info/>
-           <Search/>
-           <Repos/>
+           {/* <Search/> */}
+           {/* <Repos/> */}
            <User/>
         </div>
     )
