@@ -40,7 +40,7 @@ const Wrapper= styled.article`
   border-bottom-right-radius: var(--radius);
   position: relative;
     &::before{
-        content:"user";
+        content:"User";
         position: absolute;
         top: 0;
         left: 0;
