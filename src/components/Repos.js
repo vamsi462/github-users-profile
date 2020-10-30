@@ -2,25 +2,35 @@ import React from 'react'
 import styled from 'styled-components'
 import { GithubContext } from '../context/context';
 import ChartComponent from './Charts/ExampleChart';
-import { Pie3D } from './Charts';
+import { Pie3D, Doughnut2D } from './Charts';
 
 export default function Repos() {
-    const{repos}= React.useContext(GithubContext)
-    let languages = repos.reduce((total,item)=>{
-        const{language}= item;
+    const{repos,stargazers_count}= React.useContext(GithubContext)
+  let languages = repos.reduce((total,item)=>{
+        const{language,stargazers_count}= item;
         if(!language) return total
         if(!total[language]){
-          total[language]={label:language,value:1}
+          total[language]={label:language, value:1, stars:stargazers_count}
         }
         else{
-          total[language] ={...total[language],value:total[language].value+1}
+          total[language] ={...total[language],value:total[language].value+ 1 , stars:total[language].stars + stargazers_count}
         }
         return total;
     },{})
-    languages= Object.values(languages).sort((l,v)=>{
+
+  //mostly popular languages used
+    const mostUSed= Object.values(languages).sort((l,v)=>{
       return v.value - l.value;
     }).slice(0,5)
     console.log(languages)
+
+  //most stars per language
+  const mostStars = Object.values(languages).sort((l,v)=>{
+    return v.stars - l.stars
+  }).map((item)=>{
+    return {...item, value:item.stars}
+  }).slice(0,5)
+   
     const chartData = [
       {
         label: "HTML",
@@ -38,8 +48,10 @@ export default function Repos() {
     return (
         <section className="section">
             <Wrapper className="section-center">
-                <Pie3D data={languages}/>
-                {/* <ChartComponent data={chartData}/> */}
+                <Pie3D data={mostUSed}/>
+                <div></div>
+                <Doughnut2D data={mostStars}/>
+                <div></div>
             </Wrapper>
 
         </section>
