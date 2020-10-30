@@ -30,7 +30,16 @@ const GitHubProvider =({children} )=>{
 
       if(response){
           setGithubUser(response.data)
-          console.log(response.data)
+        const { login, followers_url } = response.data;
+
+        //reposurl
+         axios(`${rootUrl}/users/${login}/repos?per_page=100`)
+         .then((response)=>{
+            setRepos(response.data)
+         })
+
+          axios(`${followers_url}?per_page=100`)
+          .then(res=>setFollowers(res.data))
       }
       else{
           toggleError(true,'user notfound!!')
