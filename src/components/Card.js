@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { MdBusiness, MdLocationOn, MdLink } from 'react-icons/md';
+import { MdBusiness, MdLocationOn } from 'react-icons/md';
 import { GithubContext } from '../context/context';
 export default function Card() {
 
     const {githubUser}= React.useContext(GithubContext)
   
-    const {html_url, bio,twitter_username,name, company,blog,avatar_url,location}=githubUser
+    const {html_url, bio,twitter_username,name, company,avatar_url,location}=githubUser
     return (
       <Wrapper>
          <header>

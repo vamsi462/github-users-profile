@@ -10,7 +10,7 @@ export default function Followers() {
         <div className="followers">
             {followers.map((follower,index)=>{
                 const {avatar_url:img,html_url,login} =follower;
-                return( <article>
+                return( <article key={index}>
                     <img src={img} alt={login}/>
                     <div>
                         <h4>{login}</h4>
