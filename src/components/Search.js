@@ -5,11 +5,17 @@ import { GithubContext } from "../context/context";
 
 export default function Search() {
   const [user, setUser] = React.useState("");
-  const {requests,error} =React.useContext(GithubContext)
-console.log(requests)
+  const {
+      requests,
+      error,
+      searchGithubUser
+  } = React.useContext(GithubContext)
+
   const handleSubmit = (e) => {
-      e.preventDefault()
-    console.log(user);
+      e.preventDefault();
+     if(user){
+        searchGithubUser(user)
+        }
   };
   return (
     <section className='section'>

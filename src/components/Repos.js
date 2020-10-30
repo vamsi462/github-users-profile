@@ -22,7 +22,7 @@ export default function Repos() {
     const mostUSed= Object.values(languages).sort((l,v)=>{
       return v.value - l.value;
     }).slice(0,5)
-    console.log(languages)
+   
 
   //most stars per language
   const mostStars = Object.values(languages).sort((l,v)=>{
