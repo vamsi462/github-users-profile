@@ -40,4 +40,19 @@ const Wrapper = styled.section`
     margin-bottom: 0;
     font-weight: 400;
   }
+  img {
+    width: 35px !important;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  button {
+    background: transparent;
+    border: transparent;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    letter-spacing: var(--spacing);
+    color: var(--clr-grey-5);
+    cursor: pointer;
+  }
 `
