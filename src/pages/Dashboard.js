@@ -5,8 +5,8 @@ export default function Dashboard() {
     return (
       <div>
         {/* <Navbar></Navbar> */}
+        <Search/>
         <Info />
-        {/* <Search/> */}
         <User />
         <Repos/>
       </div>
