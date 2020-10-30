@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { GithubContext } from '../context/context';
 import ChartComponent from './Charts/ExampleChart';
-import { Pie3D, Doughnut2D } from './Charts';
+import { Pie3D, Doughnut2D, Column3D, Bar3d } from './Charts';
 
 export default function Repos() {
     const{repos,stargazers_count}= React.useContext(GithubContext)
@@ -31,27 +31,30 @@ export default function Repos() {
     return {...item, value:item.stars}
   }).slice(0,5)
    
-    const chartData = [
-      {
-        label: "HTML",
-        value: "290",
-      },
-      {
-        label: "CSS",
-        value: "260",
-      },
-      {
-        label: "JavaScript",
-        value: "180",
-      }
-    ];
+
+//stars
+
+let {stars,forks}= repos.reduce((total,item)=>{
+
+  const{stargazers_count,name,forks}=item;
+  total.stars[stargazers_count]={label:name,value:stargazers_count}
+  total.forks[forks] ={label:name,value:forks}
+
+  return total
+},{
+  stars:{},forks:{}
+})
+
+let starsData = Object.values(stars).slice(-5).reverse();
+let forksData = Object.values(forks).slice(-5).reverse();
+
     return (
         <section className="section">
             <Wrapper className="section-center">
                 <Pie3D data={mostUSed}/>
-                <div></div>
+                <Column3D data={starsData}/>
                 <Doughnut2D data={mostStars}/>
-                <div></div>
+               <Bar3d data={forksData}/>
             </Wrapper>
 
         </section>
