@@ -33,7 +33,7 @@ const Pie3D = ({ data }) => {
         caption:"Languages",
         theme: "fusion",
         decimals:0,
-        pieRadius:'45%',
+        pieRadius:'45%', 
 
 
       },
