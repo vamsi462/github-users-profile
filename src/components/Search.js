@@ -8,7 +8,8 @@ export default function Search() {
   const {
       requests,
       error,
-      searchGithubUser
+      searchGithubUser,
+      isLoading
   } = React.useContext(GithubContext)
 
   const handleSubmit = (e) => {
@@ -32,7 +33,7 @@ export default function Search() {
             value={user}
             onChange={(e)=>setUser(e.target.value)}
           />
-          {requests > 0 && <button> Search </button>} 
+          {requests > 0 && !isLoading &&(<button> Search </button>)} 
         </div>
       </form>
   <h3>requests:{requests}/60</h3>

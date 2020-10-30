@@ -18,7 +18,11 @@ const GitHubProvider =({children} )=>{
     const [requests, setRequests] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
 
+
+    //get user details
     const searchGithubUser= async(user)=>{
+        toggleError()
+        setIsLoading(true)
       const response = await axios(`${rootUrl}/users/${user}`)
       .catch((err) =>
           console.log(err)
@@ -31,6 +35,8 @@ const GitHubProvider =({children} )=>{
       else{
           toggleError(true,'user notfound!!')
       }
+      checkRequests()
+      setIsLoading(false)
     }
 
     //requests for the users
@@ -55,7 +61,7 @@ const GitHubProvider =({children} )=>{
     useEffect(checkRequests,[])
 
     return(
-        <GithubContext.Provider value={{githubUser,repos,followers,requests,error,searchGithubUser}}>
+        <GithubContext.Provider value={{githubUser,repos,followers,requests,error,searchGithubUser,isLoading}}>
             {children}
         </GithubContext.Provider>
     )
